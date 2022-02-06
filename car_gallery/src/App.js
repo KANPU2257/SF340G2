@@ -1,12 +1,13 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import "./App.css";
+import CarList from "./components/Car";
 
 function App() {
+  console.log("Kampoo");
   return (
     <div className="App">
-      <header>
-
-      </header>
+      kampoo
+      <CarList />
     </div>
   );
 }
@@ -14,4 +15,3 @@ function App() {
 export default App;
 
 // Hello kampu
-
