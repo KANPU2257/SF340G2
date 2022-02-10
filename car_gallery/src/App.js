@@ -1,10 +1,10 @@
 import React from "react";
-import Dashdoard from "./components/Dashdoard";
+import Dashboard from "./components/Dashboard";
 
 export default function App() {
   return (
     <div>
-      <Dashdoard />
+      <Dashboard />
     </div>
   );
 }
