@@ -1,17 +1,10 @@
-import logo from "./logo.svg";
-import "./App.css";
-import CarList from "./components/Car";
+import React from "react";
+import Dashdoard from "./components/Dashdoard";
 
-function App() {
-  console.log("Kampoo");
+export default function App() {
   return (
-    <div className="App">
-      kampoo
-      <CarList />
+    <div>
+      <Dashdoard />
     </div>
   );
 }
-
-export default App;
-
-// Hello kampu
