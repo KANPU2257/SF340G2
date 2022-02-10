@@ -9,11 +9,17 @@ export default class Dashboard extends Component {
     this.state = {
       cars: [],
     };
+    
   }
+  
 
   componentDidMount() {
     axios
-      .get("http://127.0.0.1:4000/cars/brand/audi")
+      .get("http://127.0.0.1:4000/cars/brand/audi",{
+        headers: {
+          'Content-Type': 'application/json',
+        }
+      })
       .then((res) => {
         this.setState({
           cars: res.data,
