@@ -13,4 +13,8 @@ router.get("/brand/:brand", async (req, res) => {
   res.json(c);
 });
 
+router.get("/all",async (req,res) => {
+  const c = await Car.find({});
+  res.json(c)
+})
 module.exports = router;
