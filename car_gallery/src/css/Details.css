@@ -1,0 +1,26 @@
+.detail{
+    padding-top: 5%;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    background-color: bisque;
+}
+
+.subDetail{
+    width: 70%;
+    height: inherit;
+}
+
+#img{
+    width: 50%;
+    height: 50%;
+}
+
+#model{
+    
+}
+
+#brand{
+    
+}
