@@ -23,6 +23,7 @@ export default function App() {
       >
         <Navbar.Brand>CARGallery</Navbar.Brand>
       </Navbar>
+      <Dashboard></Dashboard>
       {/* <CarImgSlider slides={CarImgGallery}/> */}
       {/* <Details/> */}
     </div>

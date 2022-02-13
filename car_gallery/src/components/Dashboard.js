@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import DashboardData from "./DashboardData";
-
+import CarImgSlider from "./CarImgSlider";
 export default class Dashboard extends Component {
   constructor(props) {
     super(props);
@@ -38,8 +38,9 @@ export default class Dashboard extends Component {
   render() {
     return (
       <div>
-        kampoo
         <div>{this.data()}</div>
+        {/* <CarImgSlider></CarImgSlider> */}
+        
       </div>
     );
   }
