@@ -2,14 +2,14 @@ import React, { useState, useEffect } from "react";
 import { CarImgGallery } from "./CarImgGallery";
 import { FaArrowCircleRight, FaArrowCircleLeft } from "react-icons/fa";
 
-const CarImgSlider = (slides) => {
+const CarImgSlider = (props) => {
   const [current, setCurrent] = useState(0);
   // const len = slides.length;
   const [len, setLen] = useState(0)
   const [images, setImages] = useState([])
   
   useEffect(()=>{
-    setImages(slides.slides)
+    setImages(props.slides)
     setLen(images.length)
     // console.log(len);
   })
