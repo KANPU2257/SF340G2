@@ -1,7 +1,5 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import CarImgSlider from "./CarImgSlider";
-import { CarImgGallery } from "./CarImgGallery";
 export default class DashboardData extends Component {
   // เอาไอดีมาเก็บไว้ในสเตดอีกตัวแปรนึงเพื่อค่าจะได้ไม่เปลี่ยน แล้วค่อยใช้ตัวแปรโกลบอลส่งให้ลูก
   render() {
@@ -10,7 +8,7 @@ export default class DashboardData extends Component {
     return (
       <div>
         <h1>{this.props.obj.model}</h1>
-        <CarImgSlider slides = {images}></CarImgSlider>
+        <CarImgSlider slides={images}></CarImgSlider>
       </div>
     );
   }

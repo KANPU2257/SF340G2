@@ -1,8 +1,5 @@
 import React, { Component } from "react";
 import axios from "axios";
-import DashboardData from "./DashboardData";
-import CarImgSlider from "./CarImgSlider";
-import Brands from "./Brands";
 import { Link } from "react-router-dom";
 import { Image } from "react-bootstrap";
 export default class Dashboard extends Component {
@@ -35,7 +32,7 @@ export default class Dashboard extends Component {
   data = () => {
     return this.state.brands.map((res) => {
       return (
-        <Link to={"/brand/"+res.brand}>
+        <Link to={"/brand/" + res.brand}>
           <Image src={res.logo} width="450"></Image>
         </Link>
       );
