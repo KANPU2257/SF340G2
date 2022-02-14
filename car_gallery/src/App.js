@@ -6,27 +6,31 @@ import { Navbar } from "react-bootstrap";
 import "./App.css";
 import Car from "./components/Car";
 import ThemeContext from "./components/ThemeContext";
-import { BrowserRouter, Route, Routes, Link } from "react-router-dom";
+import Brands from "./components/Brands";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import CarImgSlider from "./components/CarImgSlider";
-import {CarImgGallery} from "./components/CarImgGallery";
+import { CarImgGallery } from "./components/CarImgGallery";
 
 export default function App() {
   return (
-    <div>
-      <Navbar
-        className="Navbar"
-        bg="purple"
-        variant="dark"
-        sticky="top"
-        expand="sm"
-        collapseOnSelect
-      >
-        <Navbar.Brand>CARGallery</Navbar.Brand>
-      </Navbar>
-      <Dashboard></Dashboard>
-      {/* <CarImgSlider slides={CarImgGallery}/> */}
-      {/* <Details/> */}
-    </div>
+    <Router>
+      <div>
+        <Navbar
+          className="Navbar"
+          bg="purple"
+          variant="dark"
+          sticky="top"
+          expand="sm"
+          collapseOnSelect
+        >
+          <Navbar.Brand>CARGallery</Navbar.Brand>
+        </Navbar>
+        <Switch>
+          <Route exact path="/" component={Dashboard}></Route>
+          <Route exact path="/brand/:brand" component={Brands}></Route>
+        </Switch>
+      </div>
+    </Router>
   );
 }
 // export default class App extends Component {

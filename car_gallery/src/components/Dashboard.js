@@ -2,26 +2,29 @@ import React, { Component } from "react";
 import axios from "axios";
 import DashboardData from "./DashboardData";
 import CarImgSlider from "./CarImgSlider";
+import Brands from "./Brands";
+import { Link } from "react-router-dom";
+import { Image } from "react-bootstrap";
 export default class Dashboard extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      cars: [],
+      brands: [],
     };
   }
-
   componentDidMount() {
     axios
-      .get("http://127.0.0.1:4000/cars", {
+      .get("http://127.0.0.1:4000/brands", {
         headers: {
           "Content-Type": "application/json",
         },
       })
       .then((res) => {
         this.setState({
-          cars: res.data,
+          brands: res.data,
         });
+        console.log(this.state.brands);
       })
       .catch((error) => {
         console.log(error);
@@ -30,8 +33,12 @@ export default class Dashboard extends Component {
   }
 
   data = () => {
-    return this.state.cars.map((res, i) => {
-      return <DashboardData obj={res} key={i} />;
+    return this.state.brands.map((res) => {
+      return (
+        <Link to={"/brand/"+res.brand}>
+          <Image src={res.logo} width="450"></Image>
+        </Link>
+      );
     });
   };
 
@@ -39,8 +46,6 @@ export default class Dashboard extends Component {
     return (
       <div>
         <div>{this.data()}</div>
-        {/* <CarImgSlider></CarImgSlider> */}
-        
       </div>
     );
   }

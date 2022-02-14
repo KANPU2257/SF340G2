@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 const express = require('express')
 const bodyParser = require('body-parser')
 const app = express()
-const mongo_url = 'mongodb+srv://team_user:20012544@cargallery.nej3x.mongodb.net/cars?retryWrites=true&w=cars'
+const mongo_url = 'mongodb+srv://team_user:20012544@cargallery.nej3x.mongodb.net/cars?retryWrites=true'
 const port = 4000
 
 var allowCrossDomain = function (req, res, next) {
@@ -28,7 +28,7 @@ app.get('/',(req,res)=>{
 })
 
 const CarRoute = require('./routes/Cars')
-
+const BrandRoute = require('./routes/Brands')
 app.use('/cars',CarRoute)
-
+app.use('/brands',BrandRoute)
 app.listen(port,console.log("Listening on port: ",port))
