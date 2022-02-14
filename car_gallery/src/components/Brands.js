@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import DashboardData from "./DashboardData";
 import Details from "./Details";
 export default function Brands() {
   const params = useParams();
@@ -33,9 +34,9 @@ export default function Brands() {
       {cars.map((data) => {
         return (
           <div>
-            <Details obj={data} />
+          <Details obj={data}/>
           </div>
-        );
+        )
       })}
     </div>
   );
