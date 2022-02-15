@@ -30,11 +30,10 @@ export default function Brands() {
   };
   return (
     <div>
-      <div>{brand}</div>
       {cars.map((data) => {
         return (
           <div>
-          <Details obj={data}/>
+            <Details obj={data} />
           </div>
         )
       })}

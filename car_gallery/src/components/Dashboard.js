@@ -32,8 +32,16 @@ export default class Dashboard extends Component {
   data = () => {
     return this.state.brands.map((res) => {
       return (
-        <Link to={"/brand/"+res.brand}>
-          <Image src={res.logo} width="450"></Image>
+
+        <Link to={"/brand/" + res.brand}>
+          <Image style={{
+            borderRadius: 15,
+            width: '400',
+            height: '200',
+            boxShadow: '1px 1px 2px 2px grey',
+            margin:10,
+            marginLeft:'3%'
+          }} src={res.logo} width="450"></Image>
         </Link>
       );
     });
@@ -41,7 +49,8 @@ export default class Dashboard extends Component {
 
   render() {
     return (
-      <div>
+      <div style={{
+        alignItems: 'center',}}>
         <div>{this.data()}</div>
       </div>
     );

@@ -26,8 +26,8 @@ const CarImgSlider = (props) => {
 
   return (
     <section className="slider">
-      <FaArrowCircleLeft className="left-arrow" onClick={prevSlide} />
-      <FaArrowCircleRight className="right-arrow" onClick={nextSlide} />
+      <FaArrowCircleLeft style={{color:'white'}} className="left-arrow" onClick={prevSlide} />
+      <FaArrowCircleRight style={{color:'white'}} className="right-arrow" onClick={nextSlide} />
       {images.map((slide,index) => {
         return (
           <div
@@ -35,7 +35,11 @@ const CarImgSlider = (props) => {
             key={index}
           >
             {index === current && (
-              <img src={slide} alt="car image" className="image"/>
+              <img style={{
+                width:'50%',
+                height:'50%',
+                boxShadow: '3px 3px black',
+              }} src={slide} alt="car image" className="image"/>
             )}
           </div>
         );
