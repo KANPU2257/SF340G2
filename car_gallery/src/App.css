@@ -10,7 +10,6 @@
   padding: 12px;
   height: 3000px;
 }
-
 .coloring{
   color: black;
 }
@@ -25,7 +24,7 @@
 
 .image {
   width:  60%;
-  border-radius: 10px;
+  border-radius: 5px;
 }
 
 .right-arrow{

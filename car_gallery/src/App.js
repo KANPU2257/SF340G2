@@ -18,7 +18,7 @@ export default function App() {
           expand="sm"
           collapseOnSelect
         >
-          <Navbar.Brand>CARGallery</Navbar.Brand>
+            <Navbar.Brand href="/"> CARGallery</Navbar.Brand>
         </Navbar>
         <Switch>
           <Route exact path="/" component={Dashboard}></Route>

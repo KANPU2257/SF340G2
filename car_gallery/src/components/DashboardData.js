@@ -6,7 +6,7 @@ export default class DashboardData extends Component {
     console.log(this.props);
     const images = this.props.obj.images.split(",");
     return (
-      <div style={{width:'60%',backgroundColor:'#4600AC',color:'white',borderRadius: 15,boxShadow: '3px 3px black',}}>
+      <div style={{padding:10,marginBottom:30,width:'60%',backgroundColor:'#4600AC',color:'white',borderRadius: 15,boxShadow: '3px 3px black',}}>
         <h1 style={{textShadow:'2px 2px black'}}>{this.props.obj.model}</h1>
         <CarImgSlider slides = {images}></CarImgSlider>
       </div>
