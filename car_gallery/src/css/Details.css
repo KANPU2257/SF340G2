@@ -4,12 +4,13 @@
     flex-direction: column;
     text-align: center;
     align-items: center;
-    background-color: white;
+    background-color: #ddd3e6;
 }
 
-.subDetail{
-    width: 70%;
+#subDetail{
+    width: 100%;
     height: inherit;
+    text-align: left;
 }
 
 #img{

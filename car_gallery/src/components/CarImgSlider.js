@@ -38,7 +38,6 @@ const CarImgSlider = (props) => {
               <img style={{
                 width:'50%',
                 height:'50%',
-                boxShadow: '3px 3px black',
               }} src={slide} alt="car image" className="image"/>
             )}
           </div>
