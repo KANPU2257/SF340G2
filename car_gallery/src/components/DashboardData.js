@@ -15,7 +15,7 @@ export default class DashboardData extends Component {
           padding: 10,
           marginBottom: 30,
           width: "60%",
-          backgroundColor: "#4600AC",
+          backgroundColor: "#420674",
           color: "white",
           borderRadius: 15,
           boxShadow: "3px 3px black",
