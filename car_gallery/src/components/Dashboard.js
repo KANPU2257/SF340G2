@@ -35,6 +35,7 @@ export default class Dashboard extends Component {
 
         <Link to={"/brand/" + res.brand}>
           <Image style={{
+            backgroundColor:'white',
             borderRadius: 15,
             width: '400',
             height: '200',
