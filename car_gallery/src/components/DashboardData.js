@@ -24,7 +24,7 @@ export default class DashboardData extends Component {
         <CarImgSlider slides={images}></CarImgSlider>
         <Accordion defaultActiveKey="0" flush>
           <Accordion.Item eventKey="1">
-            <Accordion.Header>แสดงข้อมูลเกี่ยวกับรถ</Accordion.Header>
+            <Accordion.Header >แสดงข้อมูลเกี่ยวกับรถ</Accordion.Header>
             <Accordion.Body>
               <div id="subDetail" style={{ color: "black" }}>
                 <div
