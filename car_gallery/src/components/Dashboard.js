@@ -33,7 +33,6 @@ export default class Dashboard extends Component {
     return this.state.brands.map((res) => {
       return (
         <Link to={"/brand/" + res.brand}>
-<<<<<<< HEAD
           <Image
             style={{
               borderRadius: 15,
@@ -47,17 +46,6 @@ export default class Dashboard extends Component {
             width="380"
             height="200"
           ></Image>
-=======
-          <Image style={{
-            backgroundColor:'white',
-            borderRadius: 15,
-            width: '400',
-            height: '200',
-            boxShadow: '1px 1px 2px 2px grey',
-            margin:10,
-            marginLeft:'3%'
-          }} src={res.logo} width="380" height="200"></Image>
->>>>>>> 2e7bb0d4bc7a7d956914f1917706680bd83a2108
         </Link>
       );
     });
