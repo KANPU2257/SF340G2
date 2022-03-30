@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import CarImgSlider from "./CarImgSlider";
+import { Link } from "react-router-dom";
 import Accordion from "react-bootstrap/Accordion";
 import { useHistory } from "react-router-dom";
-import { Link } from "react-router-dom";
 
 export default class DashboardData extends Component {
   // เอาไอดีมาเก็บไว้ในสเตดอีกตัวแปรนึงเพื่อค่าจะได้ไม่เปลี่ยน แล้วค่อยใช้ตัวแปรโกลบอลส่งให้ลูก
@@ -28,13 +28,35 @@ export default class DashboardData extends Component {
         <Link
           to={{
             pathname: "/brand/car/details",
-            state: { model: data.model, price: data.price },
+            state: { 
+              model: data.model, 
+              price: data.price,
+              type: data.type,
+              engine: data.engine,
+              engineDetails: data.engineDetails,
+              drivertrain: data.drivertrain,
+              transmission: data.transmission,
+              fuel: data.fuel,
+              fuelSupplySystem: data.fuelSupplySystem,
+              upholsteryMat: data.upholsteryMat,
+              elecSeat: data.elecSeat,
+              sound: data.sound,
+              absBreak: data.absBreak,
+              airBags: data.airBags,
+              elecGlass: data.elecGlass,
+              equipOut: data.equipOut,
+              equipIn: data.equipIn,
+              equipSec: data.equipSec,
+              equipLivable: data.equipLivable,
+              note: data.note,
+              advice: data.advice,
+              update: data.update
+            },
           }}
         >
           See
         </Link>
       </div>
-      // </div>
     );
   }
 }

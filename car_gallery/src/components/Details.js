@@ -9,7 +9,7 @@ export default class Details extends Component {
   render() {
     // console.log(this.props);
     const data = this.props.obj;
-    console.log(data);
+    console.log("test" + data);
     return (
       <div class="detail">
         <DashboardData obj={this.props.obj}></DashboardData>
