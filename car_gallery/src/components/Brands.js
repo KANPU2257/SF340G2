@@ -3,6 +3,8 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import DashboardData from "./DashboardData";
 import Details from "./Details";
+// this is brand page!!!
+
 export default function Brands() {
   const params = useParams();
   const brand = params.brand;
@@ -13,6 +15,8 @@ export default function Brands() {
   }, []);
 
   const getCars = (brand) => {
+    // call api port 4000
+
     axios
       .get("http://127.0.0.1:4000/cars/brand/" + brand, {
         headers: {
@@ -35,7 +39,7 @@ export default function Brands() {
           <div>
             <Details obj={data} />
           </div>
-        )
+        );
       })}
     </div>
   );
