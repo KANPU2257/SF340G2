@@ -11,7 +11,7 @@ import EachCar from "./components/EachCar";
 export default function App() {
   return (
     <Router>
-      <div>
+      <div style={{backgroundColor:'#A9A9A9'}}>
         <Navbar
           className="Navbar"
           bg="black"
