@@ -8,7 +8,7 @@ const CarImgSlider = (props) => {
   
   useEffect(()=>{
     setImages(props.slides)
-    setLen(images.length)
+    setLen(images.length) 
   })
 
   const nextSlide = () => {

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { Image } from "react-bootstrap";
+import Compare from "./compare/Compare";
 export default class Dashboard extends Component {
   constructor(props) {
     super(props);
@@ -61,6 +62,7 @@ export default class Dashboard extends Component {
         }}
       >
         <div>{this.data()}</div>
+        <div><Compare /></div>
       </div>
     );
   }

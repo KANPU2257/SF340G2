@@ -14,7 +14,7 @@ export default class DashboardData extends Component {
       <div
         style={{
           padding: 10,
-          marginBottom: 30,
+          marginBottom: 30, 
           width: "60%",
           backgroundColor: "#420674",
           color: "white",
@@ -28,13 +28,13 @@ export default class DashboardData extends Component {
         <Link
           to={{
             pathname: "/brand/car/details",
-            state: { 
-              model: data.model, 
+            state: {
+              model: data.model,
               price: data.price,
               type: data.type,
               engine: data.engine,
               engineDetails: data.engineDetails,
-              drivertrain: data.drivertrain,
+              drivetrain: data.drivetrain,
               transmission: data.transmission,
               fuel: data.fuel,
               fuelSupplySystem: data.fuelSupplySystem,
@@ -50,7 +50,7 @@ export default class DashboardData extends Component {
               equipLivable: data.equipLivable,
               note: data.note,
               advice: data.advice,
-              update: data.update
+              update: data.update,
             },
           }}
         >
