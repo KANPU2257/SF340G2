@@ -43,240 +43,205 @@ function Compare() {
 
   return (
     <div>
-      <div className="compare">
-        <div className="title">
-          <h2>Comparison</h2>
-        </div>
-        <Row>
-          <Col>
-            <select
-              onChange={(e) => changeCom1(e.target.value)}
-              defaultValue={current_id1}
-              className="select"
-            >
-              <option>{defaultSelectValue}</option>
-              {cars.map((data) => {
-                return <option value={data._id}>{data.model}</option>;
-              })}
-            </select>
-
+      <Table striped bordered hover>
+        <thead>
+          <tr>
+            <th className="topic">หัวข้อ</th>
+            <th className="topic1">
+              <select
+                onChange={(e) => changeCom1(e.target.value)}
+                defaultValue={current_id1}
+                className="select"
+              >
+                <option>{defaultSelectValue}</option>
+                {cars.map((data) => {
+                  return <option value={data._id}>{data.model}</option>;
+                })}
+              </select>
+            </th>
+            <th className="topic1">
+              <select
+                onChange={(e) => changeCom2(e.target.value)}
+                defaultValue={current_id2}
+                className="select"
+              >
+                <option>{defaultSelectValue}</option>
+                {cars.map((data) => {
+                  return <option value={data._id}>{data.model}</option>;
+                })}
+              </select>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>รุ่น</td>
             {cars.map((data) =>
               data._id === current_id1 ? (
-                <div>
-                  <div className="model">
-                    <h5>{data.model}</h5>
-                  </div>
-                  <div>
-                    <img
-                      className="img-car"
-                      src={data.images.substring(0, data.images.indexOf(","))}
-                    />
-                  </div>
-                  <Table striped bordered hover>
-                    <thead>
-                      <tr className="topic">
-                        <th>หัวข้อ</th>
-                        <th>รายละเอียด</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td className="subtopic">ราคา:</td>
-                        <td>{data.price}</td>
-                      </tr>
-                      <tr>
-                        <td className="subtopic">ประเภท:</td>
-                        <td>{data.type}</td>
-                      </tr>
-                      <tr>
-                        <td className="subtopic">เครื่องยนต์:</td>
-                        <td>{data.engine}</td>
-                      </tr>
-                      <tr>
-                        <td className="subtopic">รายละเอียดเครื่องยนต์:</td>
-                        <td>{data.engineDetails}</td>
-                      </tr>
-                      <tr>
-                        <td className="subtopic">ระบบขับเคลื่อน:</td>
-                        <td>{data.drivetrain}</td>
-                      </tr>
-                      <tr>
-                        <td className="subtopic">ระบบเกียร์:</td>
-                        <td>{data.transmission}</td>
-                      </tr>
-                      <tr>
-                        <td className="subtopic">เชื้อเพลงที่ใช้ได้:</td>
-                        <td>{data.fuel}</td>
-                      </tr>
-                      <tr>
-                        <td className="subtopic">ระบบจ่ายน้ำมัน:</td>
-                        <td>{data.fuelSupplySystem}</td>
-                      </tr>
-                      <tr>
-                        <td className="subtopic">วัสดุหุ้มเบาะ:</td>
-                        <td>{data.upholsteryMat}</td>
-                      </tr>
-                      <tr>
-                        <td className="subtopic">เบาะปรับไฟฟ้า:</td>
-                        <td>{data.elecSeat}</td>
-                      </tr>
-                      <tr>
-                        <td className="subtopic">เครื่องเสียง:</td>
-                        <td>{data.sound}</td>
-                      </tr>
-                      <tr>
-                        <td className="subtopic">ระบบเบรค ABS:</td>
-                        <td>{data.absBreak}</td>
-                      </tr>
-                      <tr>
-                        <td className="subtopic">Air Bags:</td>
-                        <td>{data.airBags}</td>
-                      </tr>
-                      <tr>
-                        <td className="subtopic">กระจกไฟฟ้า:</td>
-                        <td>{data.elecGlass}</td>
-                      </tr>
-                      <tr>
-                        <td className="subtopic">อุปกรณ์มาตรฐานภายนอก:</td>
-                        <td>{data.equipOut}</td>
-                      </tr>
-                      <tr>
-                        <td className="subtopic">อุปกรณ์มาตรฐานภายใน:</td>
-                        <td>{data.equipIn}</td>
-                      </tr>
-                      <tr>
-                        <td className="subtopic">อุปกรณ์มาตรฐานความปลอดภัย:</td>
-                        <td>{data.equipSec}</td>
-                      </tr>
-                      <tr>
-                        <td className="subtopic">
-                          อุปกรณ์มาตรฐานความสะดวกสบาย:
-                        </td>
-                        <td>{data.equipLivable}</td>
-                      </tr>
-                    </tbody>
-                  </Table>
-                </div>
+                <td>{data.price.toLocaleString("en-US")} บาท</td>
               ) : null
             )}
-          </Col>
-
-          <Col>
-            <select
-              onChange={(e) => changeCom2(e.target.value)}
-              defaultValue={current_id2}
-              className="select"
-            >
-              <option>{defaultSelectValue}</option>
-              {cars.map((data) => {
-                return <option value={data._id}>{data.model}</option>;
-              })}
-            </select>
-
-            {/* <h2>Selected: {current_id1}</h2> */}
-
             {cars.map((data) =>
               data._id === current_id2 ? (
-                <div>
-                  <div className="model">
-                    <h5>{data.model}</h5>
-                  </div>
-                  <div>
-                    <img
-                      className="img-car"
-                      src={data.images.substring(0, data.images.indexOf(","))}
-                    />
-                  </div>
-                  <Table striped bordered hover>
-                    <thead>
-                      <tr className="topic">
-                        <th>หัวข้อ</th>
-                        <th>รายละเอียด</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td className="subtopic">ราคา:</td>
-                        <td>{data.price}</td>
-                      </tr>
-                      <tr>
-                        <td className="subtopic">ประเภท:</td>
-                        <td>{data.type}</td>
-                      </tr>
-                      <tr>
-                        <td className="subtopic">เครื่องยนต์:</td>
-                        <td>{data.engine}</td>
-                      </tr>
-                      <tr>
-                        <td className="subtopic">รายละเอียดเครื่องยนต์:</td>
-                        <td>{data.engineDetails}</td>
-                      </tr>
-                      <tr>
-                        <td className="subtopic">ระบบขับเคลื่อน:</td>
-                        <td>{data.drivetrain}</td>
-                      </tr>
-                      <tr>
-                        <td className="subtopic">ระบบเกียร์:</td>
-                        <td>{data.transmission}</td>
-                      </tr>
-                      <tr>
-                        <td className="subtopic">เชื้อเพลงที่ใช้ได้:</td>
-                        <td>{data.fuel}</td>
-                      </tr>
-                      <tr>
-                        <td className="subtopic">ระบบจ่ายน้ำมัน:</td>
-                        <td>{data.fuelSupplySystem}</td>
-                      </tr>
-                      <tr>
-                        <td className="subtopic">วัสดุหุ้มเบาะ:</td>
-                        <td>{data.upholsteryMat}</td>
-                      </tr>
-                      <tr>
-                        <td className="subtopic">เบาะปรับไฟฟ้า:</td>
-                        <td>{data.elecSeat}</td>
-                      </tr>
-                      <tr>
-                        <td className="subtopic">เครื่องเสียง:</td>
-                        <td>{data.sound}</td>
-                      </tr>
-                      <tr>
-                        <td className="subtopic">ระบบเบรค ABS:</td>
-                        <td>{data.absBreak}</td>
-                      </tr>
-                      <tr>
-                        <td className="subtopic">Air Bags:</td>
-                        <td>{data.airBags}</td>
-                      </tr>
-                      <tr>
-                        <td className="subtopic">กระจกไฟฟ้า:</td>
-                        <td>{data.elecGlass}</td>
-                      </tr>
-                      <tr>
-                        <td className="subtopic">อุปกรณ์มาตรฐานภายนอก:</td>
-                        <td>{data.equipOut}</td>
-                      </tr>
-                      <tr>
-                        <td className="subtopic">อุปกรณ์มาตรฐานภายใน:</td>
-                        <td>{data.equipIn}</td>
-                      </tr>
-                      <tr>
-                        <td className="subtopic">อุปกรณ์มาตรฐานความปลอดภัย:</td>
-                        <td>{data.equipSec}</td>
-                      </tr>
-                      <tr>
-                        <td className="subtopic">
-                          อุปกรณ์มาตรฐานความสะดวกสบาย:
-                        </td>
-                        <td>{data.equipLivable}</td>
-                      </tr>
-                    </tbody>
-                  </Table>
-                </div>
+                <td>{data.price.toLocaleString("en-US")} บาท</td>
               ) : null
             )}
-          </Col>
-        </Row>
-      </div>
+          </tr>
+          <tr>
+            <td>ประเภท</td>
+            {cars.map((data) =>
+              data._id === current_id1 ? <td>{data.type}</td> : null
+            )}
+            {cars.map((data) =>
+              data._id === current_id2 ? <td>{data.type}</td> : null
+            )}
+          </tr>
+          <tr>
+            <td>เครื่องยนต์</td>
+            {cars.map((data) =>
+              data._id === current_id1 ? <td>{data.engine}</td> : null
+            )}
+            {cars.map((data) =>
+              data._id === current_id2 ? <td>{data.engine}</td> : null
+            )}
+          </tr>
+          <tr>
+            <td>รายละเอียดเครื่องยนต์</td>
+            {cars.map((data) =>
+              data._id === current_id1 ? <td>{data.engineDetails}</td> : null
+            )}
+            {cars.map((data) =>
+              data._id === current_id2 ? <td>{data.engineDetails}</td> : null
+            )}
+          </tr>
+          <tr>
+            <td>ระบบขับเคลื่อน</td>
+            {cars.map((data) =>
+              data._id === current_id1 ? <td>{data.drivetrain}</td> : null
+            )}
+            {cars.map((data) =>
+              data._id === current_id2 ? <td>{data.drivetrain}</td> : null
+            )}
+          </tr>
+          <tr>
+            <td>ระบบเกียร์</td>
+            {cars.map((data) =>
+              data._id === current_id1 ? <td>{data.transmission}</td> : null
+            )}
+            {cars.map((data) =>
+              data._id === current_id2 ? <td>{data.transmission}</td> : null
+            )}
+          </tr>
+          <tr>
+            <td>เชื้อเพลงที่ใช้ได้</td>
+            {cars.map((data) =>
+              data._id === current_id1 ? <td>{data.fuel}</td> : null
+            )}
+            {cars.map((data) =>
+              data._id === current_id2 ? <td>{data.fuel}</td> : null
+            )}
+          </tr>
+          <tr>
+            <td>ระบบจ่ายน้ำมัน</td>
+            {cars.map((data) =>
+              data._id === current_id1 ? <td>{data.fuelSupplySystem}</td> : null
+            )}
+            {cars.map((data) =>
+              data._id === current_id2 ? <td>{data.fuelSupplySystem}</td> : null
+            )}
+          </tr>
+          <tr>
+            <td>วัสดุหุ้มเบาะ</td>
+            {cars.map((data) =>
+              data._id === current_id1 ? <td>{data.upholsteryMat}</td> : null
+            )}
+            {cars.map((data) =>
+              data._id === current_id2 ? <td>{data.upholsteryMat}</td> : null
+            )}
+          </tr>
+          <tr>
+            <td>เบาะปรับไฟฟ้า</td>
+            {cars.map((data) =>
+              data._id === current_id1 ? <td>{data.elecSeat}</td> : null
+            )}
+            {cars.map((data) =>
+              data._id === current_id2 ? <td>{data.elecSeat}</td> : null
+            )}
+          </tr>
+          <tr>
+            <td>เครื่องเสียง</td>
+            {cars.map((data) =>
+              data._id === current_id1 ? <td>{data.sound}</td> : null
+            )}
+            {cars.map((data) =>
+              data._id === current_id2 ? <td>{data.sound}</td> : null
+            )}
+          </tr>
+          <tr>
+            <td>ระบบเบรค ABS</td>
+            {cars.map((data) =>
+              data._id === current_id1 ? <td>{data.absBreak}</td> : null
+            )}
+            {cars.map((data) =>
+              data._id === current_id2 ? <td>{data.absBreak}</td> : null
+            )}
+          </tr>
+          <tr>
+            <td>Air Bags</td>
+            {cars.map((data) =>
+              data._id === current_id1 ? <td>{data.airBags}</td> : null
+            )}
+            {cars.map((data) =>
+              data._id === current_id2 ? <td>{data.airBags}</td> : null
+            )}
+          </tr>
+          <tr>
+            <td>กระจกไฟฟ้า</td>
+            {cars.map((data) =>
+              data._id === current_id1 ? <td>{data.elecGlass}</td> : null
+            )}
+            {cars.map((data) =>
+              data._id === current_id2 ? <td>{data.elecGlass}</td> : null
+            )}
+          </tr>
+          <tr>
+            <td>อุปกรณ์มาตรฐานภายนอก</td>
+            {cars.map((data) =>
+              data._id === current_id1 ? <td>{data.equipOut}</td> : null
+            )}
+            {cars.map((data) =>
+              data._id === current_id2 ? <td>{data.equipOut}</td> : null
+            )}
+          </tr>
+          <tr>
+            <td>อุปกรณ์มาตรฐานภายใน</td>
+            {cars.map((data) =>
+              data._id === current_id1 ? <td>{data.equipIn}</td> : null
+            )}
+            {cars.map((data) =>
+              data._id === current_id2 ? <td>{data.equipIn}</td> : null
+            )}
+          </tr>
+          <tr>
+            <td>อุปกรณ์มาตรฐานความปลอดภัย</td>
+            {cars.map((data) =>
+              data._id === current_id1 ? <td>{data.equipSec}</td> : null
+            )}
+            {cars.map((data) =>
+              data._id === current_id2 ? <td>{data.equipSec}</td> : null
+            )}
+          </tr>
+          <tr>
+            <td>อุปกรณ์มาตรฐานความสะดวกสบาย</td>
+            {cars.map((data) =>
+              data._id === current_id1 ? <td>{data.equipLivable}</td> : null
+            )}
+            {cars.map((data) =>
+              data._id === current_id2 ? <td>{data.equipLivable}</td> : null
+            )}
+          </tr>
+        </tbody>
+      </Table>
     </div>
   );
 }

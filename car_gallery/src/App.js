@@ -8,8 +8,7 @@ import Brands from "./components/Brands";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import EachCar from "./components/EachCar";
 
-export default function App(){
-  
+export default function App() {
   return (
     <Router>
       <div>
@@ -22,10 +21,9 @@ export default function App(){
           collapseOnSelect
         >
           <Navbar.Brand href="/"> CARGallery</Navbar.Brand>
-          
         </Navbar>
         <Switch>
-          <Route exact path="/" component={NewDashboard}></Route>
+          <Route exact path="/" component={Dashboard}></Route>
           <Route exact path="/brand/:brand" component={Brands}></Route>
           <Route exact path="/brand/car/details" component={EachCar}></Route>
         </Switch>
