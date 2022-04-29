@@ -1,6 +1,5 @@
 import React from "react";
 import Dashboard from "./components/Dashboard";
-import NewDashboard from "./components/NewDashboard";
 import "bootstrap/dist/css/bootstrap.css";
 import { Navbar } from "react-bootstrap";
 import "./App.css";
