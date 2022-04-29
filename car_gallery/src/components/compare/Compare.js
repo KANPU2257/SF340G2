@@ -62,7 +62,9 @@ function Compare() {
                 defaultValue={current_id1}
                 className="select"
               >
-                <option>{defaultSelectValue}</option>
+                <option selected disabled>
+                  {defaultSelectValue}
+                </option>
                 {cars.map((data) => {
                   return <option value={data._id}>{data.model}</option>;
                 })}
@@ -74,7 +76,9 @@ function Compare() {
                 defaultValue={current_id2}
                 className="select"
               >
-                <option>{defaultSelectValue}</option>
+                <option selected disabled>
+                  {defaultSelectValue}
+                </option>
                 {cars.map((data) => {
                   return <option value={data._id}>{data.model}</option>;
                 })}

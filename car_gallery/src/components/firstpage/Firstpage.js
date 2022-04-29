@@ -74,7 +74,7 @@ export default function Firstpage() {
               </Col>
               <Col style={{ ...mystyle.Col }}>
                 <button class="btn-feature" onClick={goToDashboard}>
-                  รถยนต์ทั้งหมด
+                  แสดงรถยนต์ทั้งหมด
                 </button>
               </Col>
             </Row>
