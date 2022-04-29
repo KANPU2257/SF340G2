@@ -28,8 +28,9 @@ export default class DashboardData extends Component {
         <Link
           to={{
             pathname: "/brand/car/details",
-            state: {
-              model: data.model,
+            state: { 
+              images: data.images,
+              model: data.model, 
               price: data.price,
               type: data.type,
               engine: data.engine,

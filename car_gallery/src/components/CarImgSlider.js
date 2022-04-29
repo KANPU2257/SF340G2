@@ -35,9 +35,10 @@ const CarImgSlider = (props) => {
             key={index}
           >
             {index === current && (
-              <img style={{
-                width:'50%',
-                height:'50%',
+              <img 
+              style={{
+                width:'100%',
+                height:'100%',
               }} src={slide} alt="car image" className="image"/>
             )}
           </div>
