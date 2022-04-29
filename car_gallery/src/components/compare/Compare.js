@@ -107,7 +107,7 @@ function Compare() {
           <tr className="one">
             {current_id1 != "None" || current_id2 != "None" ? (
               <td>
-                <div className="subtopictwo">รุ่น</div>
+                <div className="subtopictwo">ราคา</div>
               </td>
             ) : null}
             {cars.map((data) =>

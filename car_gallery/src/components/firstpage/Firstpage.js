@@ -72,7 +72,7 @@ export default function Firstpage() {
             <Row style={{ ...mystyle.Row }}>
               <Col style={{ ...mystyle.Col }}>
                 <button class="btn-feature" onClick={goToCompare}>
-                  ระบบเปรียบเทียบราคารถยนต์
+                  ระบบเปรียบเทียบรถยนต์
                 </button>
               </Col>
               <Col style={{ ...mystyle.Col }}>
