@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 export default function Filter(props) {
-  const object = props.data;
+  const cars = props.data;
   const [price, setPrice] = useState(400000);
 
   const handleInput = (e) => {
@@ -10,7 +10,6 @@ export default function Filter(props) {
 
   return (
     <div className="App">
-      <div>{props.data}</div>
       <input
         step={10000}
         max={1000000}
@@ -19,7 +18,7 @@ export default function Filter(props) {
         onInput={handleInput}
       />
       <h1>Price: {price}</h1>
-      {object.map((data) => {
+      {cars.map((data) => {
         return <div>{data.price}</div>;
       })}
     </div>
