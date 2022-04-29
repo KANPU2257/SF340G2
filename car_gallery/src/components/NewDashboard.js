@@ -31,22 +31,39 @@ export default class Dashboard extends Component {
       });
   }
 
-  getSort(e) {
-    console.log(e);
+  getSort = (e) => {
+    var _data = this.state.cars;
+    if(e === "1"){
+      console.log("A - Z");
+      _data.sort((a,b)=> a.model.localeCompare(b.model));
+      console.log(_data);
+      this.setState({cars:_data})
+    }
+    else if(e === "2"){
+      console.log("Z - A");
+      _data.sort((a,b)=> b.model.localeCompare(a.model));
+      console.log(_data);
+      this.setState({cars:_data})
+    }
+    else if(e === "3"){
+      console.log("0 - 100")
+      _data.sort((a,b)=> a.price - b.price);
+      console.log(_data);
+      this.setState({cars:_data})
+    }
+    else if(e === "4"){
+      console.log("100 - 0");
+      _data.sort((a,b)=> a.price - b.price);
+      console.log(_data);
+      this.setState({cars:_data.reverse()})
+    }
   }
+
 
 
   data = () => {
     return this.state.cars.map((res) => {
       return (
-        // <Image
-        //   src={res.images.split(",")[0]}
-        //   style={{
-        //     width: "300px",
-        //     height: "200px",
-        //     margin: "30px"
-        //   }}
-        // ></Image>
 
         <Card className="text-center" style={{width:'20vw', margin:'1vw', backgroundColor:'#DCDCDC'}}>
           <Card.Img variant="top" src={res.images.split(",")[0]} style={{height:"25vh", paddingTop:'0.5vw'}}/>
@@ -59,18 +76,6 @@ export default class Dashboard extends Component {
             </Card.Footer>
           </Card.Body>
         </Card>
-        // <Card style={{ width: "30vw" }}>
-        // <Card.Img variant="top" src={res.images.split(",")[0]} />
-        // <Card.Body>
-        //   <Card.Title>{res.model}</Card.Title>
-        //   <Card.Text>
-        //     Some quick example text to build on the card title and make up the
-        //     bulk of the card's content.
-        //   </Card.Text>
-        //   <Button variant="primary">Go somewhere</Button>
-        // </Card.Body>
-      // </Card>
-        // <span>{res.model}</span>
       );
     });
   };
@@ -115,11 +120,11 @@ export default class Dashboard extends Component {
         <div >
         <div style={{ width: "20vw" , height:'100vh',padding:"20px" ,paddingTop:"10vh", backgroundColor: "pink", position:'-webkit-sticky', position:'sticky' , top:'0'}} >
 
-          <DropdownButton id="sorting" title="sort by" onSelect={(e)=>console.log(e.target.value)}>
-            <Dropdown.Item value="1">A - Z</Dropdown.Item>
-            <Dropdown.Item value="2">Z - A</Dropdown.Item>
-            <Dropdown.Item value="3">ราคาต่ำ - สูง</Dropdown.Item>
-            <Dropdown.Item value="4">ราคาสูง - ต่ำ</Dropdown.Item>
+          <DropdownButton id="sorting" title="sort by" onSelect={(e) => this.getSort(e)}>
+            <Dropdown.Item eventKey="1">A - Z</Dropdown.Item>
+            <Dropdown.Item eventKey="2">Z - A</Dropdown.Item>
+            <Dropdown.Item eventKey="3">ราคาต่ำ - สูง</Dropdown.Item>
+            <Dropdown.Item eventKey="4">ราคาสูง - ต่ำ</Dropdown.Item>
           </DropdownButton>
           <DropdownButton id="brand-filter" title="Brand">
             <Dropdown.Item href="">Action</Dropdown.Item>
