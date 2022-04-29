@@ -121,8 +121,8 @@ export default class Dashboard extends Component {
         <div style={{ width: "20vw" , height:'100vh',padding:"20px" ,paddingTop:"10vh", backgroundColor: "pink", position:'-webkit-sticky', position:'sticky' , top:'0'}} >
 
           <DropdownButton id="sorting" title="sort by" onSelect={(e) => this.getSort(e)}>
-            <Dropdown.Item eventKey="1">A - Z</Dropdown.Item>
-            <Dropdown.Item eventKey="2">Z - A</Dropdown.Item>
+            <Dropdown.Item eventKey="1">ก - ฮ</Dropdown.Item>
+            <Dropdown.Item eventKey="2">ฮ - ก</Dropdown.Item>
             <Dropdown.Item eventKey="3">ราคาต่ำ - สูง</Dropdown.Item>
             <Dropdown.Item eventKey="4">ราคาสูง - ต่ำ</Dropdown.Item>
           </DropdownButton>
