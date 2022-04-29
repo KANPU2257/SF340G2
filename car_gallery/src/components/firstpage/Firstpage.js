@@ -11,11 +11,10 @@ export default function Firstpage() {
     let path = `./compare`;
     history.push(path);
   };
-   const goToDashboard = () => {
-     let path = `./dashboard`;
-     history.push(path);
-   };
-
+  const goToDashboard = () => {
+    let path = `./dashboard`;
+    history.push(path);
+  };
 
   const mystyle = {
     container: {
@@ -50,9 +49,7 @@ export default function Firstpage() {
     Row: {
       marginTop: "2%",
     },
-    Col: {
-      color: "red",
-    },
+    Col: {},
   };
 
   return (
@@ -77,12 +74,7 @@ export default function Firstpage() {
               </Col>
               <Col style={{ ...mystyle.Col }}>
                 <button class="btn-feature" onClick={goToDashboard}>
-                  ระบบเรียงลำดับรถยนต์
-                </button>
-              </Col>
-              <Col style={{ ...mystyle.Col }}>
-                <button class="btn-feature" onClick={goToDashboard}>
-                  ระบบกรองราคารถยนต์
+                  รถยนต์ทั้งหมด
                 </button>
               </Col>
             </Row>
