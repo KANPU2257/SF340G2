@@ -11,6 +11,7 @@ import {
   Col,
 } from "react-bootstrap";
 import { Button } from "bootstrap";
+// import "../css/dashboard.css";
 
 export default class MainDashboard extends Component {
   constructor(props) {
@@ -18,11 +19,10 @@ export default class MainDashboard extends Component {
 
     this.state = {
       cars: [],
-      id: "",
 
       brand_state: false,
       filter_state: false,
-      brand: "แสดงแบรด์ทั้งหมด",
+      brand: "แสดงแบรนด์ทั้งหมด",
       sort: "ไม่เรียงลำดับ",
       filter: "แสดงราคารถทั้งหมด",
 
@@ -92,7 +92,7 @@ export default class MainDashboard extends Component {
     } else if (e === "4") {
       this.setState({ brand: "ferrari" });
     } else if (e === "0") {
-      this.setState({ brand_state: false, brand: "แสดงแบรด์ทั้งหมด" });
+      this.setState({ brand_state: false, brand: "แสดงแบรนด์ทั้งหมด" });
     }
     console.log(this.state.brand);
   };
@@ -138,95 +138,101 @@ export default class MainDashboard extends Component {
     }
   };
 
-  data_card = (model, images, price) => {
+  data_card = (res) => {
+    const model = res.model;
+    const images = res.images;
+    const price = res.price;
+    console.log(res);
     return (
+      <div style={{ width: "30%" }}>
+
       <Card
         className="text-center"
         style={{ width: "20vw", margin: "1vw", backgroundColor: "#DCDCDC" }}
       >
+        <Link
+        to={{
+          pathname: "/brand/car/details",
+          state: {
+            data: res,
+          },
+        }}
+        className="container">
         <Card.Img
           variant="top"
           src={images.split(",")[0]}
           style={{ height: "25vh", paddingTop: "0.5vw" }}
-        />
+          />
         <Card.Body>
           <Card.Title style={{ textDecoration: "none" }}>{model}</Card.Title>
           <Card.Footer className="text-muted">
             {price.toLocaleString("en-US")} บาท
           </Card.Footer>
         </Card.Body>
+          </Link>
       </Card>
+          </div>
     );
   };
 
   data = (res) => {
-    if (this.state.brand_state === false && this.state.filter_state === false) {
-      return this.data_card(res.model, res.images, res.price);
-    } else if (
-      this.state.brand_state === true &&
-      this.state.filter_state === false
-    ) {
-      if (res.brand === this.state.brand) {
-        return this.data_card(res.model, res.images, res.price);
-      }
-    } else if (
-      this.state.filter_state === true &&
-      this.state.brand_state === true
-    ) {
+
       if (
-        res.brand === this.state.brand &&
-        res.price >= this.state.min_price &&
-        res.price <= this.state.max_price
+        this.state.brand_state === false &&
+        this.state.filter_state === false
       ) {
-        return this.data_card(res.model, res.images, res.price);
-      }
-    } else if (this.state.filter_state === true) {
-      if (
-        res.price >= this.state.min_price &&
-        res.price <= this.state.max_price
+        return this.data_card(res);
+      } else if (
+        this.state.brand_state === true &&
+        this.state.filter_state === false
       ) {
-        return this.data_card(res.model, res.images, res.price);
+        if (res.brand === this.state.brand) {
+          return this.data_card(res);
+        }
+      } else if (
+        this.state.filter_state === true &&
+        this.state.brand_state === true
+      ) {
+        if (
+          res.brand === this.state.brand &&
+          res.price >= this.state.min_price &&
+          res.price <= this.state.max_price
+        ) {
+          return this.data_card(res);
+        }
+      } else if (this.state.filter_state === true) {
+        if (
+          res.price >= this.state.min_price &&
+          res.price <= this.state.max_price
+        ) {
+          return this.data_card(res);
+        }
       }
-    }
   };
 
   render() {
     return (
-      <div style={{ display: "flex", width: "100%" }}>
+      <div>
         <Row>
-          <Col>
+          <Col xs={13} md={9} >
+            {/* <Row>{this.data()}</Row> */}
+            <Row >
+
             {this.state.cars.map((res) => {
               return (
-                <Link
-                  to={{
-                    pathname: "/brand/car/details",
-                    state: {
-                      data: res,
-                    },
-                  }}
-                  className="container"
-                >
-                  <Row>{this.data(res)}</Row>
-                </Link>
-              );
-            })}
+                <>{this.data(res)}</>
+                );
+              })}
+              </Row>
+            
           </Col>
-          <Col>
+          <Col xs={5} md={3} className="menu">
             <div>
-              <div
-                style={{
-                  width: "20vw",
-                  height: "100vh",
-                  padding: "20px",
-                  paddingTop: "10vh",
-                  backgroundColor: "pink",
-                  position: "-webkit-sticky",
-                  position: "sticky",
-                  top: "0",
-                }}
-              >
+              <div>
                 <div>Kampoo</div>
                 <DropdownButton
+                  variant="warning"
+                  className="dropdown"
                   id="sorting"
                   title={this.state.sort}
                   onSelect={(e) => this.getSort(e)}
@@ -238,17 +244,21 @@ export default class MainDashboard extends Component {
                   <Dropdown.Item eventKey="4">ราคาสูง - ต่ำ</Dropdown.Item>
                 </DropdownButton>
                 <DropdownButton
+                  className="dropdown"
+                  variant="warning"
                   id="brand-filter"
                   title={this.state.brand}
                   onSelect={(e) => this.getBrand(e)}
                 >
-                  <Dropdown.Item eventKey="0">แสดงแบรด์ทั้งหมด</Dropdown.Item>
+                  <Dropdown.Item eventKey="0">แสดงแบรนด์ทั้งหมด</Dropdown.Item>
                   <Dropdown.Item eventKey="1">bmw</Dropdown.Item>
                   <Dropdown.Item eventKey="2">audi</Dropdown.Item>
                   <Dropdown.Item eventKey="3">aston martin</Dropdown.Item>
                   <Dropdown.Item eventKey="4">ferrari</Dropdown.Item>
                 </DropdownButton>
                 <DropdownButton
+                  className="dropdown"
+                  variant="warning"
                   id="brand-filter"
                   title={this.state.filter}
                   onSelect={(e) => this.getFilters(e)}
