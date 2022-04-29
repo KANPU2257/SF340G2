@@ -14,15 +14,14 @@ import { Button } from "bootstrap";
 export default class Dashboard extends Component {
   constructor(props) {
     super(props);
-    var bmw = [];
-    var audi = [];
 
     this.state = {
       cars: [],
+      filtered_cars : []
     };
   }
   componentDidMount() {
-    this.getCar();
+    this.getCar()
   }
 
   getCar = () => {
@@ -36,6 +35,7 @@ export default class Dashboard extends Component {
         this.setState({
           cars: res.data,
         });
+        // return res.data
         console.log(this.state.cars);
       })
       .catch((error) => {
@@ -45,7 +45,7 @@ export default class Dashboard extends Component {
   };
 
   getSort = (e) => {
-    var _data = this.state.cars;
+    var _data = this.state.filtered_cars.length > 0 ? this.state.filtered_cars: this.state.cars;
     if (e === "1") {
       console.log("A - Z");
       _data.sort((a, b) => a.model.localeCompare(b.model));
@@ -71,27 +71,54 @@ export default class Dashboard extends Component {
 
   getBrand = (e) => {
     var _data = this.state.cars;
+    this.setState({filtered_cars:[]})
     if (e === "1") {
+      var _data = this.state.cars;
+      var ret = [];
       for (var i = 0; i < _data.length; i++) {
         if (_data[i].brand === "bmw") {
-          bmw.push(_data[i]);
+          ret.push(_data[i]);
         }
       }
 
-      this.setState({ cars: bmw });
+      this.setState({ filtered_cars: ret });
     } else if (e === "2") {
+      var _data = this.state.cars;
+      var ret = [];
       for (var i = 0; i < _data.length; i++) {
         if (_data[i].brand === "audi") {
-          audi.push(_data[i]);
+          ret.push(_data[i]);
         }
       }
-      this.setState({ cars: audi });
+
+      this.setState({ filtered_cars: ret });
     }
-    console.log(this.state.cars);
+    else if (e === "3") {
+      var _data = this.state.cars;
+      var ret = [];
+      for (var i = 0; i < _data.length; i++) {
+        if (_data[i].brand === "aston-martin") {
+          ret.push(_data[i]);
+        }
+      }
+
+      this.setState({ filtered_cars: ret });
+    }
+    else if (e === "4") {
+      var _data = this.state.cars;
+      var ret = [];
+      for (var i = 0; i < _data.length; i++) {
+        if (_data[i].brand === "ferrari") {
+          ret.push(_data[i]);
+        }
+      }
+
+      this.setState({ filtered_cars: ret });
+    }
   };
 
-  data = () => {
-    return this.state.cars.map((res) => {
+  data = (dt) => {
+    return dt.map((res) => {
       return (
         <Card
           className="text-center"
@@ -148,7 +175,7 @@ export default class Dashboard extends Component {
           }}
           className="container"
         >
-          <Row>{this.data()}</Row>
+          <Row>{this.data(this.state.filtered_cars.length > 0 ? this.state.filtered_cars : this.state.cars)}</Row>
         </Link>
         <div>
           <div
@@ -181,7 +208,7 @@ export default class Dashboard extends Component {
               <Dropdown.Item eventKey="1">bmw</Dropdown.Item>
               <Dropdown.Item eventKey="2">audi</Dropdown.Item>
               <Dropdown.Item eventKey="3">aston martin</Dropdown.Item>
-              <Dropdown.Item eventKey="3">ferrari</Dropdown.Item>
+              <Dropdown.Item eventKey="4">ferrari</Dropdown.Item>
             </DropdownButton>
             <p>filter</p>
           </div>
