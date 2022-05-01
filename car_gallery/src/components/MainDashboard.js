@@ -11,6 +11,7 @@ import {
   Col,
 } from "react-bootstrap";
 import { Button } from "bootstrap";
+import Sticky from 'react-sticky-el';
 // import "../css/dashboard.css";
 
 export default class MainDashboard extends Component {
@@ -144,13 +145,12 @@ export default class MainDashboard extends Component {
     const price = res.price;
     console.log(res);
     return (
-      <div style={{ width: "30%" }}>
-
+      <div style={{ width: "30%",marginLeft:"30px" }}>
       <Card
         className="text-center"
-        style={{ width: "20vw", margin: "1vw", backgroundColor: "#DCDCDC" }}
+        style={{width: "100%",height:"92%", margin: "1vw", backgroundColor: "rgb(240, 240, 240,0.8)",boxShadow:"2px 2px 1px 0.2px #737373"}}
       >
-        <Link
+        <Link style={{textDecoration: "none"}}
         to={{
           pathname: "/brand/car/details",
           state: {
@@ -161,12 +161,14 @@ export default class MainDashboard extends Component {
         <Card.Img
           variant="top"
           src={images.split(",")[0]}
-          style={{ height: "25vh", paddingTop: "0.5vw" }}
+          style={{ height: "25vh", width:"100%",marginTop:"10px",borderRadius:"8px" }}
           />
         <Card.Body>
-          <Card.Title style={{ textDecoration: "none" }}>{model}</Card.Title>
-          <Card.Footer className="text-muted">
+          <Card.Title style={{color:"#FE6F01",marginBottom:"50px"}}>{model}</Card.Title>
+          <Card.Footer style={{width:"75%",position:"absolute",bottom:"10px",backgroundColor:"rgb(255, 185, 0)",borderRadius:"7px"}} className="text-muted" >
+            <div style={{fontWeight:"bold",color:"#000000"}}>
             {price.toLocaleString("en-US")} บาท
+            </div>
           </Card.Footer>
         </Card.Body>
           </Link>
@@ -226,11 +228,12 @@ export default class MainDashboard extends Component {
               </Row>
             
           </Col>
-          <Col xs={5} md={3} className="menu">
-            <div>
-              <div>
-                <div>Kampoo</div>
+          <Col xs={6} md={3} >
+          <Sticky stickyStyle={{top:"30px"}}>
+            <div 
+            style={{margin:"10%",backgroundColor:"rgb(240, 240, 240,0.8)",padding:"10px",borderRadius:"8px",paddingTop:"10px",paddingBottom:"1px"}}>
                 <DropdownButton
+                  style={{marginBottom:"5%"}}
                   variant="warning"
                   className="dropdown"
                   id="sorting"
@@ -245,6 +248,7 @@ export default class MainDashboard extends Component {
                 </DropdownButton>
                 <DropdownButton
                   className="dropdown"
+                  style={{marginBottom:"5%"}}
                   variant="warning"
                   id="brand-filter"
                   title={this.state.brand}
@@ -258,6 +262,7 @@ export default class MainDashboard extends Component {
                 </DropdownButton>
                 <DropdownButton
                   className="dropdown"
+                  style={{marginBottom:"5%"}}
                   variant="warning"
                   id="brand-filter"
                   title={this.state.filter}
@@ -278,9 +283,8 @@ export default class MainDashboard extends Component {
                   </Dropdown.Item>
                 </DropdownButton>
                 {console.log(this.state.min_price)}
-                <div></div>
-              </div>
-            </div>
+                </div>
+                </Sticky>
           </Col>
         </Row>
       </div>
