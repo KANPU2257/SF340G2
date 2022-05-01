@@ -9,10 +9,10 @@ import {
   CardGroup,
   Row,
   Col,
+  Form,
 } from "react-bootstrap";
 import { Button } from "bootstrap";
-import Sticky from 'react-sticky-el';
-// import "../css/dashboard.css";
+import Sticky from "react-sticky-el";
 
 export default class MainDashboard extends Component {
   constructor(props) {
@@ -26,9 +26,10 @@ export default class MainDashboard extends Component {
       brand: "แสดงแบรนด์ทั้งหมด",
       sort: "ไม่เรียงลำดับ",
       filter: "แสดงราคารถทั้งหมด",
+      n_noCar: 0,
 
-      max_price: 0,
-      min_price: 0,
+      max_price: null,
+      min_price: null,
     };
   }
   componentDidMount() {
@@ -36,6 +37,7 @@ export default class MainDashboard extends Component {
   }
 
   getCar = () => {
+    this.state.n_noCar = 0;
     axios
       .get("http://127.0.0.1:4000/cars", {
         headers: {
@@ -55,6 +57,7 @@ export default class MainDashboard extends Component {
   };
 
   getSort = (e) => {
+    this.state.n_noCar = 0;
     var _data = this.state.cars;
     if (e === "1") {
       console.log("ก - ฮ");
@@ -77,12 +80,16 @@ export default class MainDashboard extends Component {
       console.log(_data);
       this.setState({ cars: _data.reverse(), sort: "ราคาสูงสุด - ราคาต่ำสุด" });
     } else if (e === "0") {
-      this.getCar();
+      if (this.state.n_noCar !== 0) {
+        this.getCar();
+      }
+
       this.setState({ sort: "ไม่เรียงลำดับ" });
     }
   };
 
   getBrand = (e) => {
+    this.state.n_noCar = 0;
     this.setState({ brand_state: true });
     if (e === "1") {
       this.setState({ brand: "bmw" });
@@ -99,6 +106,7 @@ export default class MainDashboard extends Component {
   };
 
   getFilters = (e) => {
+    this.state.n_noCar = 0;
     this.setState({ filter_state: true });
     if (e === "1") {
       console.log(e);
@@ -139,101 +147,157 @@ export default class MainDashboard extends Component {
     }
   };
 
+  no_car = () => {
+    return (
+      <div
+        style={{
+          textAlign: "center",
+          paddingTop: "10%",
+          color: "#a80000",
+          fontSize: "26px",
+        }}
+      >
+        <img src="https://img.icons8.com/emoji/48/000000/warning-emoji.png" />
+        <> เสียใจด้วย! ตอนนี้ยังไม่มีรถที่ตรงตามความต้องการของคุณ</>
+      </div>
+    );
+  };
+
   data_card = (res) => {
     const model = res.model;
     const images = res.images;
     const price = res.price;
     console.log(res);
     return (
-      <div style={{ width: "30%",marginLeft:"30px" }}>
-      <Card
-        className="text-center"
-        style={{width: "100%",height:"92%", margin: "1vw", backgroundColor: "rgb(240, 240, 240,0.8)",boxShadow:"2px 2px 1px 0.2px #737373"}}
-      >
-        <Link style={{textDecoration: "none"}}
-        to={{
-          pathname: "/brand/car/details",
-          state: {
-            data: res,
-          },
-        }}
-        className="container">
-        <Card.Img
-          variant="top"
-          src={images.split(",")[0]}
-          style={{ height: "25vh", width:"100%",marginTop:"10px",borderRadius:"8px" }}
-          />
-        <Card.Body>
-          <Card.Title style={{color:"#FE6F01",marginBottom:"50px"}}>{model}</Card.Title>
-          <Card.Footer style={{width:"75%",position:"absolute",bottom:"10px",backgroundColor:"rgb(255, 185, 0)",borderRadius:"7px"}} className="text-muted" >
-            <div style={{fontWeight:"bold",color:"#000000"}}>
-            {price.toLocaleString("en-US")} บาท
-            </div>
-          </Card.Footer>
-        </Card.Body>
+      <div style={{ width: "30%", marginLeft: "30px" }}>
+        <Card
+          className="text-center"
+          style={{
+            width: "100%",
+            height: "92%",
+            margin: "1vw",
+            backgroundColor: "rgb(240, 240, 240,0.8)",
+            boxShadow: "2px 2px 1px 0.2px #737373",
+          }}
+        >
+          <Link
+            style={{ textDecoration: "none" }}
+            to={{
+              pathname: "/brand/car/details",
+              state: {
+                data: res,
+              },
+            }}
+            className="container"
+          >
+            <Card.Img
+              variant="top"
+              src={images.split(",")[0]}
+              style={{
+                height: "25vh",
+                width: "100%",
+                marginTop: "10px",
+                borderRadius: "8px",
+              }}
+            />
+            <Card.Body>
+              <Card.Title
+                style={{
+                  color: "#FE6F01",
+                  marginBottom: "50px",
+                  fontSize: "18px",
+                }}
+              >
+                {model}
+              </Card.Title>
+              <Card.Footer
+                style={{
+                  width: "75%",
+                  position: "absolute",
+                  bottom: "10px",
+                  backgroundColor: "rgb(255, 185, 0)",
+                  borderRadius: "7px",
+                }}
+                className="text-muted"
+              >
+                <div style={{ fontWeight: "bold", color: "#000000" }}>
+                  {price.toLocaleString("en-US")} บาท
+                </div>
+              </Card.Footer>
+            </Card.Body>
           </Link>
-      </Card>
-          </div>
+        </Card>
+      </div>
     );
   };
 
   data = (res) => {
-
+    if (this.state.brand_state === false && this.state.filter_state === false) {
+      console.log("Not filter + Sort all time");
+      return this.data_card(res);
+    } else if (
+      this.state.brand_state === true &&
+      this.state.filter_state === false
+    ) {
+      console.log("filtered brands only  + Sort all time");
+      if (res.brand === this.state.brand) {
+        return this.data_card(res);
+      }
+    } else if (
+      this.state.filter_state === true &&
+      this.state.brand_state === true
+    ) {
+      console.log("Filtered brands and price  + Sort all time");
+      this.state.n_noCar++;
       if (
-        this.state.brand_state === false &&
-        this.state.filter_state === false
+        res.brand === this.state.brand &&
+        res.price >= this.state.min_price &&
+        res.price <= this.state.max_price
+      ) {
+        this.state.n_noCar--;
+        return this.data_card(res);
+      }
+      console.log(this.state.n_noCar);
+      if (this.state.n_noCar === this.state.cars.length) {
+        return this.no_car();
+      }
+    } else if (this.state.filter_state === true) {
+      console.log("Filtered price only  + Sort all time");
+      if (
+        res.price >= this.state.min_price &&
+        res.price <= this.state.max_price
       ) {
         return this.data_card(res);
-      } else if (
-        this.state.brand_state === true &&
-        this.state.filter_state === false
-      ) {
-        if (res.brand === this.state.brand) {
-          return this.data_card(res);
-        }
-      } else if (
-        this.state.filter_state === true &&
-        this.state.brand_state === true
-      ) {
-        if (
-          res.brand === this.state.brand &&
-          res.price >= this.state.min_price &&
-          res.price <= this.state.max_price
-        ) {
-          return this.data_card(res);
-        }
-      } else if (this.state.filter_state === true) {
-        if (
-          res.price >= this.state.min_price &&
-          res.price <= this.state.max_price
-        ) {
-          return this.data_card(res);
-        }
       }
+    }
   };
 
   render() {
     return (
       <div>
         <Row>
-          <Col xs={13} md={9} >
+          <Col xs={13} md={9} style={{ marginTop: "22px" }}>
             {/* <Row>{this.data()}</Row> */}
-            <Row >
-
-            {this.state.cars.map((res) => {
-              return (
-                <>{this.data(res)}</>
-                );
+            <Row>
+              {this.state.cars.map((res) => {
+                return <>{this.data(res)}</>;
               })}
-              </Row>
-            
+            </Row>
           </Col>
-          <Col xs={6} md={3} >
-          <Sticky stickyStyle={{top:"30px"}}>
-            <div 
-            style={{margin:"10%",backgroundColor:"rgb(240, 240, 240,0.8)",padding:"10px",borderRadius:"8px",paddingTop:"10px",paddingBottom:"1px"}}>
+          <Col xs={6} md={3}>
+            <Sticky stickyStyle={{ top: "30px" }}>
+              <div
+                style={{
+                  margin: "10%",
+                  backgroundColor: "rgb(240, 240, 240,0.8)",
+                  padding: "10px",
+                  borderRadius: "8px",
+                  paddingTop: "10px",
+                  paddingBottom: "1px",
+                }}
+              >
                 <DropdownButton
-                  style={{marginBottom:"5%"}}
+                  style={{ marginBottom: "5%" }}
                   variant="warning"
                   className="dropdown"
                   id="sorting"
@@ -248,7 +312,7 @@ export default class MainDashboard extends Component {
                 </DropdownButton>
                 <DropdownButton
                   className="dropdown"
-                  style={{marginBottom:"5%"}}
+                  style={{ marginBottom: "5%" }}
                   variant="warning"
                   id="brand-filter"
                   title={this.state.brand}
@@ -262,7 +326,7 @@ export default class MainDashboard extends Component {
                 </DropdownButton>
                 <DropdownButton
                   className="dropdown"
-                  style={{marginBottom:"5%"}}
+                  style={{ marginBottom: "5%" }}
                   variant="warning"
                   id="brand-filter"
                   title={this.state.filter}
@@ -282,9 +346,54 @@ export default class MainDashboard extends Component {
                     มากว่า 30,000,000 บาท
                   </Dropdown.Item>
                 </DropdownButton>
+
+                <Form className="form" style={{ marginTop: "10%" }}>
+                  <Row className="mb-3">
+                    <div style={{ marginBottom: "5%" }}>
+                      <b>ค้นหาราคารถอย่างละเอียด</b>
+                    </div>
+                    <Form.Group as={Col} controlId="name">
+                      <Form.Label>ราคาเริ่มต้น</Form.Label>
+                      <Form.Control
+                        type="text"
+                        placeholder="หน่วยบาท"
+                        value={this.state.min_price}
+                        onChange={(e) =>
+                          this.setState({
+                            min_price: e.target.value,
+                            filter_state: true,
+                            n_noCar: 0,
+                          })
+                        }
+                      />
+                    </Form.Group>
+
+                    <Form.Group as={Col} controlId="language">
+                      <Form.Label>ราคาสิ้นสุด</Form.Label>
+                      <Form.Control
+                        type="text"
+                        placeholder="หน่วยบาท"
+                        value={this.state.max_price}
+                        onChange={(e) =>
+                          this.setState({
+                            max_price: e.target.value,
+                            filter_state: true,
+                            n_noCar: 0,
+                          })
+                        }
+                      />
+                    </Form.Group>
+                    <div class="form-text">
+                      กรุณากรอกข้อมูลราคาเริ่มต้นและราคาสิ้นสุดให้ครบถ้วน
+                      <p style={{ color: "#F34D05" }}>
+                        คำแนะนำ: ราคาเริ่มต้นต้องน้อยกว่าราคาสิ้น
+                      </p>
+                    </div>
+                  </Row>
+                </Form>
                 {console.log(this.state.min_price)}
-                </div>
-                </Sticky>
+              </div>
+            </Sticky>
           </Col>
         </Row>
       </div>
