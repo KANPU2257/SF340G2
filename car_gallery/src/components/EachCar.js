@@ -4,94 +4,94 @@ import { Image } from "react-bootstrap";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import CarImgSlider from "./CarImgSlider";
+import "../css/EachCar.css";
 
 export default function EachCar() {
   const location = useLocation();
   const data = location.state?.data;
   return (
-    <div style={{ backgroundColor: "white" }}>
+    <div style={{ backgroundColor: "#19191c" ,color: "white"}}>
       <h2 style={{ textAlign: "center", padding: "20px" }}>{data.model}</h2>
-      <Row style={{ width: "100wv" }}>
-        <Col style={{ width: "40%", padding: "30px" }}>
-
-          <CarImgSlider slides={data.images.split(",")}></CarImgSlider>
+      <Row style={{paddingBottom:"50px"}}>
+        <Col>
+          <CarImgSlider style={{paddingLeft:"80px", width: "30%", height: "30%", padding: "30px" }}slides={data.images.split(",")}></CarImgSlider>
         </Col>
 
-        <Col style={{ width: "30%", padding: "30px", alignItems: "center" }}>
+        <Col style={{display:"flex",flexDirection:"column", justifyContent:"center" }}>
           <div>
-            <h4>ราคา</h4>
-            <p>&emsp;&emsp;{data.price}&ensp;บาท</p>
+            <h5 class="topic">ราคา</h5>
+            <p>&emsp;{data.price}&ensp;บาท</p>
           </div>
           <div>
-            <h4>ประเภท</h4>
-            <p>&emsp;&emsp;{data.type}</p>
+            <h5 class="topic">ประเภท</h5>
+            <p>&emsp;{data.type}</p>
           </div>
           <div>
-            <h4>เครื่องยนต์</h4>
-            <p>&emsp;&emsp;{data.engine}</p>
+            <h5 class="topic">เครื่องยนต์</h5>
+            <p>&emsp;{data.engine}</p>
           </div>
           <div>
-            <h4>รายละเอียดเครื่องยนต์</h4>
-            <p>&emsp;&emsp;{data.engineDetails}</p>
+            <h5 class="topic">รายละเอียดเครื่องยนต์</h5>
+            <p>&emsp;{data.engineDetails}</p>
           </div>
         </Col>
       </Row>
-      <Row>
+      <Row style={{width:"100%",paddingBottom:"50px"}}>
         <Col
           style={{
             display: "flex",
-            width: "40%",
-            padding: "30px",
+            width: "50%",
+            paddingLeft:"80px",
             alignItems: "center",
           }}
         >
-          <Row style={{}}>
-            <Col>
+          <Row style={{width:"100%"}}>
+            <Col style={{width:"100%"}}>
               <div>
-                <h5>ระบบขับเคลื่อน</h5>
-                <p>&emsp;&emsp;{data.drivetrain}</p>
+                <h5 class="topic">ระบบขับเคลื่อน</h5>
+                <p>&emsp;{data.drivetrain}</p>
               </div>
               <div>
-                <h5>ระบบเกียร์</h5>
-                <p>&emsp;&emsp;{data.transmission}</p>
+                <h5 class="topic">ระบบเกียร์</h5>
+                <p>&emsp;{data.transmission}</p>
               </div>
               <div>
-                <h5>เชื้อเพลงที่ใช้ได้</h5>
-                <p>&emsp;&emsp;{data.fuel}</p>
+                <h5 class="topic">เชื้อเพลงที่ใช้ได้</h5>
+                <p>&emsp;{data.fuel}</p>
               </div>
             </Col>
-            <Col>
+            <Col style={{width:"100%"}}>
               <div>
-                <h5>ระบบจ่ายน้ำมัน</h5>
-                <p>&emsp;&emsp;{data.fuelSupplySystem}</p>
+                <h5 class="topic">ระบบจ่ายน้ำมัน</h5>
+                <p>&emsp;{data.fuelSupplySystem}</p>
               </div>
               <div>
-                <h5>วัสดุหุ้มเบาะ</h5>
-                <p>&emsp;&emsp;{data.upholsteryMat}</p>
+                <h5 class="topic">วัสดุหุ้มเบาะ</h5>
+                <p>&emsp;{data.upholsteryMat}</p>
               </div>
               <div>
-                <h5>เบาะปรับไฟฟ้า</h5>
-                <p>&emsp;&emsp;{data.elecSeat}</p>
+                <h5 class="topic">เบาะปรับไฟฟ้า</h5>
+                <p>&emsp;{data.elecSeat}</p>
               </div>
             </Col>
           </Row>
         </Col>
-        <Col style={{ width: "40%", padding: "30px" }}>
+        <Col style={{ display:"flex",justifyContent:"center", width: "50%",}}>
           <Image
-            width="100%"
-            height="100%"
+            width="600px"
+            height="380px"
             src={data.images.split(",")[1]}
-            style={{ borderRadius: 10 }}
+            style={{ borderRadius: 5 }}
           ></Image>
         </Col>
       </Row>
 
-      <Row>
-        <Col style={{ width: "40%", padding: "30px" }}>
+      <Row style={{paddingBottom:"50px"}}>
+        <Col style={{display:"flex",justifyContent:"center"}}>
           <Image
-            width="100%"
-            height="100%"
-            style={{ borderRadius: 10 }}
+            width="600px"
+            height="380px"
+            style={{ borderRadius: 5 }}
             src={data.images.split(",")[2]}
           ></Image>
         </Col>
@@ -99,49 +99,49 @@ export default function EachCar() {
           style={{
             display: "flex",
             flexDirection: "column",
-            width: "40%",
-            padding: "30px",
+            
+            paddingRight: "80px",
             justifyContent: "center",
           }}
         >
           <div>
-            <h4>เครื่องเสียง</h4>
-            <p>&emsp;&emsp;{data.sound}</p>
+            <h5 class="topic">เครื่องเสียง</h5>
+            <p>&emsp;{data.sound}</p>
           </div>
           <div>
-            <h4>ระบบเบรค ABS</h4>
-            <p>&emsp;&emsp;{data.absBreak}</p>
+            <h5 class="topic">ระบบเบรค ABS</h5>
+            <p>&emsp;{data.absBreak}</p>
           </div>
           <div>
-            <h4>Air Bags</h4>
-            <p>&emsp;&emsp;{data.airBags}</p>
+            <h5 class="topic">Air Bags</h5>
+            <p>&emsp;{data.airBags}</p>
           </div>
           <div>
-            <h4>กระจกไฟฟ้า</h4>
-            <p>&emsp;&emsp;{data.elecGlass}</p>
+            <h5 class="topic">กระจกไฟฟ้า</h5>
+            <p>&emsp;{data.elecGlass}</p>
           </div>
         </Col>
       </Row>
-      <Row style={{ backgroundColor: "black", color: "white" }}>
+      <Row style={{ backgroundColor: "#19191c", color: "white" }}>
         <Col style={{ padding: "30px" }}>
-          <h5 style={{ color: "yellow" }}>อุปกรณ์มาตรฐานภายนอก</h5>
-          <span>&emsp;&emsp;{data.equipOut}</span>
+          <h5 style={{ color: "#ffd631" }}>อุปกรณ์มาตรฐานภายนอก</h5>
+          <span>&emsp;{data.equipOut}</span>
         </Col>
         <Col
           style={{ padding: "30px", backgroundColor: "black", color: "white" }}
         >
-          <h5 style={{ color: "yellow" }}>อุปกรณ์มาตรฐานภายใน</h5>
-          <span>&emsp;&emsp;{data.equipIn}</span>
+          <h5 style={{ color: "#ffd631" }}>อุปกรณ์มาตรฐานภายใน</h5>
+          <span>&emsp;{data.equipIn}</span>
         </Col>
         <Col style={{ padding: "30px" }}>
-          <h5 style={{ color: "yellow" }}>อุปกรณ์มาตรฐานความปลอดภัย</h5>
-          <span>&emsp;&emsp;{data.equipSec}</span>
+          <h5 style={{ color: "#ffd631" }}>อุปกรณ์มาตรฐานความปลอดภัย</h5>
+          <span>&emsp;{data.equipSec}</span>
         </Col>
         <Col
           style={{ padding: "30px", backgroundColor: "black", color: "white" }}
         >
-          <h5 style={{ color: "yellow" }}>อุปกรณ์มาตรฐานความสะดวกสบาย</h5>
-          <span>&emsp;&emsp;{data.equipLivable}</span>
+          <h5 style={{ color: "#ffd631" }}>อุปกรณ์มาตรฐานความสะดวกสบาย</h5>
+          <span>&emsp;{data.equipLivable}</span>
         </Col>
       </Row>
     </div>
