@@ -11,8 +11,8 @@ export default function EachCar() {
   const data = location.state?.data;
   return (
     <div style={{ backgroundColor: "#19191c" ,color: "white"}}>
-      <h2 style={{ textAlign: "center", padding: "20px", color:"#ffd631" }}>{data.model}</h2>
-      <Row style={{paddingBottom:"50px"}}>
+      <h2 style={{ textAlign: "center", padding: "30px", color:"#ffd631" }}>{data.model}</h2>
+      <Row style={{paddingBottom:"60px"}}>
         <Col>
           <CarImgSlider style={{paddingLeft:"80px", width: "30%", height: "30%", padding: "30px" }}slides={data.images.split(",")}></CarImgSlider>
         </Col>
@@ -36,7 +36,7 @@ export default function EachCar() {
           </div>
         </Col>
       </Row>
-      <Row style={{width:"100%",paddingBottom:"50px"}}>
+      <Row style={{width:"100%",paddingBottom:"60px"}}>
         <Col
           style={{
             display: "flex",
