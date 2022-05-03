@@ -6,5 +6,12 @@
     border-radius: 20px;
     background-color: aliceblue;
     border-color: antiquewhite; */
-    color: #ffd631;
+    color: black;
+    width: fit-content;
+    background-color: #ffd631;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-radius: 10px;
 }

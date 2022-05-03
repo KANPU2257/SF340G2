@@ -10,14 +10,52 @@ export default function EachCar() {
   const location = useLocation();
   const data = location.state?.data;
   return (
-    <div style={{ backgroundColor: "#19191c" ,color: "white"}}>
-      <h2 style={{ textAlign: "center", padding: "30px", color:"#ffd631" }}>{data.model}</h2>
-      <Row style={{paddingBottom:"60px"}}>
+    <div style={{ width: "100%", backgroundColor: "#19191c", color: "white" }}>
+      <div style={{
+        padding:"20px"
+      }}>
+        <h2
+          style={{
+            margin: "auto",
+            marginTop: "0px",
+            backgroundColor: "#383838",
+            borderRadius: "25px",
+            width: "fit-content",
+            textAlign: "center",
+            padding: "15px",
+            color: "#ffd631",
+            fontWeight: "300",
+          }}
+        >
+          {data.model}
+        </h2>
+      </div>
+
+      <Row
+        style={{
+          paddingBottom: "20px",
+          paddingTop: "20px",
+        }}
+      >
         <Col>
-          <CarImgSlider style={{paddingLeft:"80px", width: "30%", height: "30%", padding: "30px" }}slides={data.images.split(",")}></CarImgSlider>
+          <CarImgSlider
+            style={{
+              paddingLeft: "80px",
+              width: "30%",
+              height: "30%",
+              padding: "30px",
+            }}
+            slides={data.images.split(",")}
+          ></CarImgSlider>
         </Col>
 
-        <Col style={{display:"flex",flexDirection:"column", justifyContent:"center" }}>
+        <Col
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+          }}
+        >
           <div>
             <h5 class="topic">ราคา</h5>
             <p>&emsp;{data.price}&ensp;บาท</p>
@@ -36,17 +74,17 @@ export default function EachCar() {
           </div>
         </Col>
       </Row>
-      <Row style={{width:"100%",paddingBottom:"60px"}}>
+      <Row style={{ width: "100%", paddingBottom: "20px", paddingTop: "20px" }}>
         <Col
           style={{
             display: "flex",
             width: "50%",
-            paddingLeft:"80px",
+            paddingLeft: "80px",
             alignItems: "center",
           }}
         >
-          <Row style={{width:"100%"}}>
-            <Col style={{width:"100%"}}>
+          <Row style={{ width: "100%" }}>
+            <Col style={{ width: "100%" }}>
               <div>
                 <h5 class="topic">ระบบขับเคลื่อน</h5>
                 <p>&emsp;{data.drivetrain}</p>
@@ -60,7 +98,7 @@ export default function EachCar() {
                 <p>&emsp;{data.fuel}</p>
               </div>
             </Col>
-            <Col style={{width:"100%"}}>
+            <Col style={{ width: "100%" }}>
               <div>
                 <h5 class="topic">ระบบจ่ายน้ำมัน</h5>
                 <p>&emsp;{data.fuelSupplySystem}</p>
@@ -76,7 +114,9 @@ export default function EachCar() {
             </Col>
           </Row>
         </Col>
-        <Col style={{ display:"flex",justifyContent:"center", width: "50%",}}>
+        <Col
+          style={{ display: "flex", justifyContent: "center", width: "50%" }}
+        >
           <Image
             width="600px"
             height="380px"
@@ -86,8 +126,13 @@ export default function EachCar() {
         </Col>
       </Row>
 
-      <Row style={{paddingBottom:"50px"}}>
-        <Col style={{display:"flex",justifyContent:"center"}}>
+      <Row
+        style={{
+          paddingBottom: "20px",
+          paddingTop: "20px",
+        }}
+      >
+        <Col style={{ display: "flex", justifyContent: "center" }}>
           <Image
             width="600px"
             height="380px"
@@ -99,7 +144,7 @@ export default function EachCar() {
           style={{
             display: "flex",
             flexDirection: "column",
-            
+
             paddingRight: "80px",
             justifyContent: "center",
           }}
@@ -122,7 +167,7 @@ export default function EachCar() {
           </div>
         </Col>
       </Row>
-      <Row style={{ backgroundColor: "#19191c", color: "white" }}>
+      <Row style={{ backgroundColor: "#19191c", color: "white", paddingTop: "20px",}}>
         <Col style={{ padding: "30px" }}>
           <h5 style={{ color: "#ffd631" }}>อุปกรณ์มาตรฐานภายนอก</h5>
           <span>&emsp;{data.equipOut}</span>
