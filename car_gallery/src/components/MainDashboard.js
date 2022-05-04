@@ -176,8 +176,10 @@ export default class MainDashboard extends Component {
             width: "100%",
             height: "92%",
             margin: "1vw",
-            backgroundColor: "rgb(240, 240, 240,0.8)",
-            boxShadow: "2px 2px 1px 0.2px #737373",
+            backgroundColor: "rgba(0, 0, 0, 0.689)",
+            // backgroundColor: "rgb(240, 240, 240,0.8)",
+            // boxShadow: "2px 2px 1px 0.2px #737373",
+            borderRadius: "8px",
           }}
         >
           <Link
@@ -203,9 +205,10 @@ export default class MainDashboard extends Component {
             <Card.Body>
               <Card.Title
                 style={{
-                  color: "#FE6F01",
+                  verticalAlign: "baseline",
+                  color: "#fe6f01a0",
                   marginBottom: "50px",
-                  fontSize: "18px",
+                  fontSize: "16px",
                 }}
               >
                 {model}
@@ -216,7 +219,7 @@ export default class MainDashboard extends Component {
                   position: "absolute",
                   bottom: "10px",
                   backgroundColor: "rgb(255, 185, 0)",
-                  borderRadius: "7px",
+                  borderRadius: "8px",
                 }}
                 className="text-muted"
               >
@@ -276,7 +279,7 @@ export default class MainDashboard extends Component {
     return (
       <div>
         <Row>
-          <Col xs={13} md={9} style={{ marginTop: "22px" }}>
+          <Col xs={13} md={9} style={{ marginTop: "20px" }}>
             {/* <Row>{this.data()}</Row> */}
             <Row>
               {this.state.cars.map((res) => {
@@ -285,11 +288,11 @@ export default class MainDashboard extends Component {
             </Row>
           </Col>
           <Col xs={6} md={3}>
-            <Sticky stickyStyle={{ top: "30px" }}>
+            <Sticky stickyStyle={{ top: "30px"}}>
               <div
                 style={{
                   margin: "10%",
-                  backgroundColor: "rgb(240, 240, 240,0.8)",
+                  backgroundColor: "rgba(0, 0, 0, 0.689)",
                   padding: "10px",
                   borderRadius: "8px",
                   paddingTop: "10px",
@@ -347,7 +350,13 @@ export default class MainDashboard extends Component {
                   </Dropdown.Item>
                 </DropdownButton>
 
-                <Form className="form" style={{ marginTop: "10%" }}>
+                <Form
+                  className="form"
+                  style={{
+                    marginTop: "10%",
+                    color: "rgb(197, 196, 199)",
+                  }}
+                >
                   <Row className="mb-3">
                     <div style={{ marginBottom: "5%" }}>
                       <b>ค้นหาราคารถอย่างละเอียด</b>
@@ -355,7 +364,7 @@ export default class MainDashboard extends Component {
                     <Form.Group as={Col} controlId="name">
                       <Form.Label>ราคาเริ่มต้น</Form.Label>
                       <Form.Control
-                        type="text"
+                        type="number"
                         placeholder="หน่วยบาท"
                         value={this.state.min_price}
                         onChange={(e) =>
@@ -371,7 +380,7 @@ export default class MainDashboard extends Component {
                     <Form.Group as={Col} controlId="language">
                       <Form.Label>ราคาสิ้นสุด</Form.Label>
                       <Form.Control
-                        type="text"
+                        type="number"
                         placeholder="หน่วยบาท"
                         value={this.state.max_price}
                         onChange={(e) =>
@@ -383,11 +392,12 @@ export default class MainDashboard extends Component {
                         }
                       />
                     </Form.Group>
-                    <div class="form-text">
+                    <div>
                       กรุณากรอกข้อมูลราคาเริ่มต้นและราคาสิ้นสุดให้ครบถ้วน
-                      <p style={{ color: "#F34D05" }}>
-                        คำแนะนำ: ราคาเริ่มต้นต้องน้อยกว่าราคาสิ้น
-                      </p>
+                      <br />
+                      <x style={{ color: "#B9B900", textAlign: "left" }}>
+                        คำแนะนำ: ราคาเริ่มต้นต้องน้อยกว่าราคาสิ้นสุด
+                      </x>
                     </div>
                   </Row>
                 </Form>

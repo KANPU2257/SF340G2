@@ -6,30 +6,25 @@ import Col from "react-bootstrap/Col";
 import CarImgSlider from "./CarImgSlider";
 import "../css/EachCar.css";
 
+const code1 = "#181818";
+const code2 = "#2F2F2F";
+
 export default function EachCar() {
   const location = useLocation();
   const data = location.state?.data;
   return (
-    <div style={{ width: "100%", backgroundColor: "#19191c", color: "white" }}>
-      <div style={{
-        padding:"20px"
-      }}>
-        <h2
-          style={{
-            margin: "auto",
-            marginTop: "0px",
-            backgroundColor: "#383838",
-            borderRadius: "25px",
-            width: "fit-content",
-            textAlign: "center",
-            padding: "15px",
-            color: "#ffd631",
-            fontWeight: "300",
-          }}
-        >
-          {data.model}
-        </h2>
-      </div>
+    <div
+      style={{
+        width: "100%",
+        backgroundColor: "#19191c",
+        color: "rgb(197, 196, 199)",
+      }}
+    >
+      <header>
+        <div className="overlay">
+          <h2>{data.model}</h2>
+        </div>
+      </header>
 
       <Row
         style={{
@@ -54,11 +49,12 @@ export default function EachCar() {
             display: "flex",
             flexDirection: "column",
             justifyContent: "center",
+            marginRight: "1.4%",
           }}
         >
           <div>
             <h5 class="topic">ราคา</h5>
-            <p>&emsp;{data.price}&ensp;บาท</p>
+            <p>&emsp;{data.price.toLocaleString("en-US")}&ensp;บาท</p>
           </div>
           <div>
             <h5 class="topic">ประเภท</h5>
@@ -167,26 +163,40 @@ export default function EachCar() {
           </div>
         </Col>
       </Row>
-      <Row style={{ backgroundColor: "#19191c", color: "white", paddingTop: "20px",}}>
-        <Col style={{ padding: "30px" }}>
-          <h5 style={{ color: "#ffd631" }}>อุปกรณ์มาตรฐานภายนอก</h5>
-          <span>&emsp;{data.equipOut}</span>
+
+      <Row
+        style={{
+          paddingTop: "20px",
+        }}
+      >
+        <Col style={{ padding: "30px", backgroundColor: code1 }}>
+          <h5>อุปกรณ์มาตรฐานภายนอก</h5>
+          <p style={{ textIndent: "50px" }}>&emsp;{data.equipOut}</p>
         </Col>
+
         <Col
-          style={{ padding: "30px", backgroundColor: "black", color: "white" }}
+          style={{
+            padding: "30px",
+            backgroundColor: code2,
+          }}
         >
-          <h5 style={{ color: "#ffd631" }}>อุปกรณ์มาตรฐานภายใน</h5>
-          <span>&emsp;{data.equipIn}</span>
+          <h5>อุปกรณ์มาตรฐานภายใน</h5>
+          <p style={{ textIndent: "50px" }}>&emsp;{data.equipIn}</p>
         </Col>
-        <Col style={{ padding: "30px" }}>
-          <h5 style={{ color: "#ffd631" }}>อุปกรณ์มาตรฐานความปลอดภัย</h5>
-          <span>&emsp;{data.equipSec}</span>
+
+        <Col style={{ padding: "30px", backgroundColor: code1 }}>
+          <h5>อุปกรณ์มาตรฐานความปลอดภัย</h5>
+          <p style={{ textIndent: "50px" }}>&emsp;{data.equipSec}</p>
         </Col>
+
         <Col
-          style={{ padding: "30px", backgroundColor: "black", color: "white" }}
+          style={{
+            padding: "30px",
+            backgroundColor: code2,
+          }}
         >
-          <h5 style={{ color: "#ffd631" }}>อุปกรณ์มาตรฐานความสะดวกสบาย</h5>
-          <span>&emsp;{data.equipLivable}</span>
+          <h5>อุปกรณ์มาตรฐานความสะดวกสบาย</h5>
+          <p style={{ textIndent: "50px" }}>&emsp;{data.equipLivable}</p>
         </Col>
       </Row>
     </div>

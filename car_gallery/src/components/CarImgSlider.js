@@ -33,12 +33,12 @@ const CarImgSlider = (props) => {
       // }}
     >
       <FaArrowCircleLeft
-        style={{ color: "#ffd631",left:"8%" }}
+        style={{ color: "#ffd631a8", left: "8%" }}
         className="left-arrow"
         onClick={prevSlide}
       />
       <FaArrowCircleRight
-        style={{ color: "#ffd631", right:"8%" }}
+        style={{ color: "#ffd631a8", right: "8%" }}
         className="right-arrow"
         onClick={nextSlide}
       />

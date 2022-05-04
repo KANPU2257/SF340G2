@@ -45,9 +45,9 @@ function Compare() {
     <div className="compare">
       <h2
         style={{
-          color: "rgb(255, 214, 49)",
+          color: "#E5E5E5",
           padding: "1%",
-          fontFamily: "'Audiowide', cursive",
+          fontFamily: "'Pattaya', sans-serif"
         }}
       >
         Comparsion

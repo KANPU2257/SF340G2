@@ -22,7 +22,30 @@ export default function App() {
           expand="sm"
           collapseOnSelect
         >
-          <Navbar.Brand href="/"> CARGallery</Navbar.Brand>
+          <Navbar.Brand
+            href="/"
+            style={{
+              width: "100%",
+              letterSpacing: "50px",
+              color: "#ffffff71",
+              textAlign: "center",
+            }}
+          >
+            <soan
+              style={{
+                color: "#ffff0071",
+                fontFamily: "'Raleway', sans-serif",
+                fontSize: "20px",
+              }}
+            >
+              CAR
+            </soan>
+            <span
+              style={{ fontFamily: "'Raleway', sans-serif", fontSize: "20px" }}
+            >
+              GALLERY
+            </span>
+          </Navbar.Brand>
         </Navbar>
         <Switch>
           <Route exact path="/" component={Firstpage}></Route>
